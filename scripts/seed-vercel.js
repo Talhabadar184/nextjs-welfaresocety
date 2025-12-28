@@ -564,7 +564,7 @@ async function seed() {
             await db
                 .insertInto('events')
                 .values(event)
-                .onConflict((oc) => oc.column('slug')) // ✅ correct syntax now
+                .onConflict('slug') // <-- fixed
                 .doUpdateSet({
                     title: event.title,
                     date: event.date,
@@ -576,6 +576,7 @@ async function seed() {
                     linkedin: event.linkedin,
                 })
                 .execute();
+
         }
 
         console.log('✅ Database seeding completed (idempotent)');

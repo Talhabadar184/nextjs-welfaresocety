@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Dark glass (keep for specific accents if needed) */
+  .glass-panel-dark {
+    @apply backdrop-blur-md bg-black/60 border border-white/10 shadow-xl;
+  }
+
+  /* Light glass (New default for sections) */
+  .glass-panel-light {
+    @apply backdrop-blur-md bg-white/80 border border-white/40 shadow-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 160, 22, 0.3);
+    /* Softer glow */
+  }
+
+  .box-glow {
+    box-shadow: 0 10px 30px -10px rgba(255, 160, 22, 0.3);
+    /* Softer shadow */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Modern 3D and Animation Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Gradient animations */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Float animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 160, 22, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(255, 160, 22, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Copied from original index.css */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.animate-typing {
+  display: inline-block;
+  animation: typing 3s steps(40, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: none;
+  /* no blinking cursor */
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-text-shimmer {
+  animation: text-shimmer 3s linear infinite;
+}
+
+/* slick custom spacing */
+.slick-slide {
+  padding: 0 4px;
+  /* reduce side spacing between slides */
+}
+
+.ieee-cs-logo {
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.ieee-cs-logo:hover {
+  transform: scale(1.3);
+  /* Increase size by 30% */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  /* Light glow effect */
+}
+
+.ieee-cs-logo {
+  animation: scaleUp 8s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* slick slider height fix */
+.custom-slick-slider .slick-slide>div {
+  height: 100% !important;
+}
+
+.custom-slick-slider .slick-track {
+  height: 100% !important;
+  display: flex !important;
+}
+
+.custom-slick-slider .slick-slide {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }

@@ -8,7 +8,7 @@ const PersonMessage = ({
   message,
   linkedin,
   heading = "Message",
-  logo = "/Logo.png",
+  logo = "/Logo2.png",
 }) => {
   return (
     <section className="bg-white py-12 px-6">
@@ -26,24 +26,24 @@ const PersonMessage = ({
             className="w-48 h-64 object-cover rounded-lg shadow-lg mb-4"
           /> */}
           <motion.img
-  whileHover={{ scale: 1.05 }}
-  transition={{ type: "spring", stiffness: 300 }}
-  src={image}
-  alt={name}
-  className="w-48 h-64 object-cover rounded-lg shadow-lg mb-4 cursor-pointer"
-/>
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            src={image}
+            alt={name}
+            className="w-48 h-64 object-cover rounded-lg shadow-lg mb-4 cursor-pointer"
+          />
           <h2 className="text-l font-semibold text-center text-black">{name}</h2>
           <h3 className="text-base text-center text-black">{title}</h3>
 
           {linkedin && (
             <a
-            href={linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 text-[#FFA016]"
-          >
-            <FaLinkedin className="w-6 h-6" />
-          </a>
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 text-[#FFA016]"
+            >
+              <FaLinkedin className="w-6 h-6" />
+            </a>
           )}
         </motion.div>
 

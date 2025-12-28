@@ -9,7 +9,7 @@ const PersonMessage2 = ({
   linkedin,
   heading = "Message",
   message,
-  logo = "/Logo.png",
+  logo = "/Logo2.png",
 }) => {
   return (
     <section className="bg-white py-12 px-6">

@@ -449,7 +449,7 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
         // "Be gone" logic with 1.5s gap
         hideTimer = setTimeout(() => {
           setShowContent(false);
-        }, 1500);
+        }, 3000); // Display for 3 seconds instead of 1.5s
       }, 500); // Wait for load/view
     } else {
       // Reset when scrolling away so it can re-animate
@@ -478,81 +478,64 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
           style={{ backgroundImage: `url(${backgroundImage})` }}
           initial={{ scale: 1.1 }}
           animate={{ scale: inView ? 1 : 1.1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 2.5, ease: "easeOut" }} // Slower parallax entrance
         />
 
         {/* Animated Gradient Overlay - Optimized for better blending */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
 
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        </div>
-
-        {/* Floating Orbs - Reduced opacity */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#FFA016] rounded-full blur-3xl opacity-5 animate-float"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }}></div>
+        {/* Animated Grid Pattern - Sync with About Page */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         </div>
 
         {/* Hero Content */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {showContent && (
             <motion.div
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)", scale: 0.9 }}
+              key="hero-content"
+              initial={{ opacity: 0, y: 30, filter: "blur(15px)", scale: 0.8 }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
               exit={{
                 opacity: 0,
-                y: -50,
+                y: -40,
                 filter: "blur(20px)",
-                scale: 1.1,
-                transition: { duration: 0.8, ease: "easeInOut" }
+                scale: 1.2,
+                transition: { duration: 1.5, ease: "easeInOut" } // Slower exit blur
               }}
-              className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-10 md:px-20"
+              className="relative z-20 min-h-screen flex items-center justify-center px-4"
             >
-              <div className="text-center max-w-[95vw] mx-auto px-4">
+              <div className="text-center w-full flex flex-col items-center">
                 <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase mb-8 leading-tight bg-gradient-to-r from-white via-[#FFA016] to-white bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] filter brightness-125 whitespace-nowrap overflow-visible p-2"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4 leading-tight bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] whitespace-nowrap overflow-visible p-2"
                 >
-                  IEEE Computer Society UCP Chapter
+                  IEEE Computer Society UCP
                 </motion.h1>
+
+                {/* Animated Underline - Sync with About Page */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "200px" }}
+                  transition={{ delay: 0.5, duration: 1.5 }} // Slower underline draw
+                  className="h-1 bg-[#FFA016] mb-8"
+                />
 
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                  className="text-xl sm:text-2xl md:text-3xl text-white drop-shadow-2xl font-bold max-w-4xl mx-auto tracking-wide"
+                  transition={{ delay: 1, duration: 1.5 }} // Slower text fade
+                  className="text-lg sm:text-xl md:text-2xl text-white/80 drop-shadow-2xl font-bold max-w-4xl mx-auto tracking-widest uppercase"
                 >
-                  Empowering Future Tech Leaders Through Innovation & Community
+                  Empowering Future Tech Leaders
                 </motion.p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Scroll Indicator */}
-        {showContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="text-white/60 text-sm flex flex-col items-center gap-2"
-            >
-              <span>Scroll Down</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </motion.div>
-          </motion.div>
-        )}
+        {/* Bottom Masking - Enhanced for Blending with Logo Bar */}
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
+
       </section>
 
       {/* Page Sections */}

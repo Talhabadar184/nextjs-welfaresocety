@@ -20,7 +20,7 @@ const AdvisorMessage = () => {
             Muhammad Zulkifl Hasan
           </h2>
           <h3 className="text-base text-center text-black">
-             Advisor & Patron IEEE CS UCP 
+            Advisor & Patron IEEE CS UCP
           </h3>
           <a
             href="https://www.linkedin.com"
@@ -66,10 +66,10 @@ const AdvisorMessage = () => {
 
           <div className="my-6 h-[2px] bg-gradient-to-r from-black to-[#FFA016]"></div>
 
-        
+
           <div className="mt-4 flex justify-center">
             <img
-              src="/Logo.png"
+              src="/Logo2.png"
               alt="Society Logo"
               className="w-14 h-auto object-contain rounded"
             />

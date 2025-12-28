@@ -2,19 +2,27 @@ import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 dotenv.config();
 
-import { Kysely, PostgresDialect } from 'kysely';
 import { Pool } from 'pg';
+import { Kysely, PostgresDialect } from 'kysely';
 
-const isLocal = process.env.DATABASE_URL?.includes('localhost') || process.env.DATABASE_URL?.includes('127.0.0.1');
+// 🔍 Detect local DB
+const isLocal =
+    process.env.DATABASE_URL?.includes('localhost') ||
+    process.env.DATABASE_URL?.includes('127.0.0.1');
 
+console.log('DEBUG: Loaded DATABASE_URL:', process.env.DATABASE_URL);
+
+// 🟢 Create pool (Supabase-safe)
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: isLocal ? false : { rejectUnauthorized: false },
 });
 
-const db = new Kysely<any>({
+// 🟢 Create Kysely instance
+const db = new Kysely({
     dialect: new PostgresDialect({ pool }),
-})
+});
+
 
 const events = [
     {
@@ -153,45 +161,34 @@ const events = [
     }
 ]
 
-// async function seed() {
-//     console.log('Seeding events...')
-//     try {
-//         await db.deleteFrom('events').execute()
-//         for (const event of events) {
-//             await db.insertInto('events').values(event).execute()
-//         }
-//         console.log('Seeding done!')
-//     } catch (e) {
-//         console.error('Seeding failed', e)
-//     }
-//     await db.destroy()
-// }
-
-// seed()
-
-
+// 🌱 Seed function
 async function seed() {
-    console.log('🌱 Seeding events...');
+    console.log('🌱 Starting database seed...');
 
     try {
-        // ⚠️ WARNING: This wipes the table
+        // ⚠️ WARNING: clears table
         await db.deleteFrom('events').execute();
 
         for (const event of events) {
             await db.insertInto('events').values(event).execute();
         }
 
-        console.log('✅ Seeding completed successfully');
+        console.log('✅ Database seeding completed');
     } catch (error) {
         console.error('❌ Seeding failed');
         console.error(error);
         process.exit(1);
     } finally {
         await db.destroy();
+        await pool.end();
     }
 }
 
-/**
- * Run seed
- */
+if (process.env.RUN_SEED !== 'true') {
+    console.log('⏭️ Skipping seed');
+    process.exit(0);
+}
+
+
+// 🚀 Run seed
 seed();

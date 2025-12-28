@@ -1,18 +1,20 @@
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 dotenv.config();
-import { Kysely, PostgresDialect } from 'kysely'
-import { Pool } from 'pg'
+
+import { Kysely, PostgresDialect } from 'kysely';
+import { Pool } from 'pg';
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl:
+        process.env.NODE_ENV === 'production'
+            ? { rejectUnauthorized: false }
+            : false,
+});
 
 const db = new Kysely<any>({
-    dialect: new PostgresDialect({
-        pool: new Pool({
-            connectionString: process.env.DATABASE_URL,
-            ssl: process.env.DATABASE_URL?.includes('localhost') || process.env.DATABASE_URL?.includes('127.0.0.1')
-                ? undefined
-                : { rejectUnauthorized: false },
-        }),
-    }),
+    dialect: new PostgresDialect({ pool }),
 })
 
 const events = [
@@ -152,18 +154,45 @@ const events = [
     }
 ]
 
+// async function seed() {
+//     console.log('Seeding events...')
+//     try {
+//         await db.deleteFrom('events').execute()
+//         for (const event of events) {
+//             await db.insertInto('events').values(event).execute()
+//         }
+//         console.log('Seeding done!')
+//     } catch (e) {
+//         console.error('Seeding failed', e)
+//     }
+//     await db.destroy()
+// }
+
+// seed()
+
+
 async function seed() {
-    console.log('Seeding events...')
+    console.log('🌱 Seeding events...');
+
     try {
-        await db.deleteFrom('events').execute()
+        // ⚠️ WARNING: This wipes the table
+        await db.deleteFrom('events').execute();
+
         for (const event of events) {
-            await db.insertInto('events').values(event).execute()
+            await db.insertInto('events').values(event).execute();
         }
-        console.log('Seeding done!')
-    } catch (e) {
-        console.error('Seeding failed', e)
+
+        console.log('✅ Seeding completed successfully');
+    } catch (error) {
+        console.error('❌ Seeding failed');
+        console.error(error);
+        process.exit(1);
+    } finally {
+        await db.destroy();
     }
-    await db.destroy()
 }
 
-seed()
+/**
+ * Run seed
+ */
+seed();

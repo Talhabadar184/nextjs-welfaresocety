@@ -44,7 +44,7 @@ const IeeeJoinSection = () => {
             whileHover={{ scale: 1.1, rotate: -5 }}
             className="p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 transition-all duration-300 hover:border-[#FFA016]/50 hover:shadow-lg hover:shadow-[#FFA016]/20"
           >
-            <img src="Logo2.png" alt="IEEE Computer Society" className="w-16 h-16 object-contain" />
+            <img src="/Logo2.png" alt="IEEE Computer Society" className="w-16 h-16 object-contain" />
           </motion.div>
         </div>
 

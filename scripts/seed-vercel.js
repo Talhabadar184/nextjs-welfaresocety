@@ -184,10 +184,6 @@ async function seed() {
     }
 }
 
-if (process.env.RUN_SEED !== 'true') {
-    console.log('⏭️ Skipping seed');
-    process.exit(0);
-}
 
 
 // 🚀 Run seed

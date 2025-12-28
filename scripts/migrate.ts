@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 dotenv.config();
+
 import * as path from 'path';
 import { Pool } from 'pg';
 import { promises as fs } from 'fs';
@@ -11,19 +12,19 @@ import {
     FileMigrationProvider,
 } from 'kysely';
 
-
 console.log('DEBUG: Loaded DATABASE_URL:', process.env.DATABASE_URL);
 
 async function migrateToLatest() {
-    const db = new Kysely<any>({
-        dialect: new PostgresDialect({
-            pool: new Pool({
-                connectionString: process.env.DATABASE_URL,
-                ssl: process.env.DATABASE_URL?.includes('localhost') || process.env.DATABASE_URL?.includes('127.0.0.1')
-                    ? undefined
-                    : { rejectUnauthorized: false },
-            }),
-        }),
+    const pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl:
+            process.env.NODE_ENV === 'production'
+                ? { rejectUnauthorized: false }
+                : false,
+    });
+
+    const db = new Kysely({
+        dialect: new PostgresDialect({ pool }),
     });
 
     const migrator = new Migrator({
@@ -31,7 +32,6 @@ async function migrateToLatest() {
         provider: new FileMigrationProvider({
             fs,
             path,
-            // Path to the migrations folder
             migrationFolder: path.join(__dirname, '../migrations'),
         }),
     });
@@ -40,14 +40,14 @@ async function migrateToLatest() {
 
     results?.forEach((it) => {
         if (it.status === 'Success') {
-            console.log(`migration "${it.migrationName}" was executed successfully`);
-        } else if (it.status === 'Error') {
-            console.error(`failed to execute migration "${it.migrationName}"`);
+            console.log(`✅ migration "${it.migrationName}" executed`);
+        } else {
+            console.error(`❌ migration "${it.migrationName}" failed`);
         }
     });
 
     if (error) {
-        console.error('failed to migrate');
+        console.error('❌ Migration failed');
         console.error(error);
         process.exit(1);
     }

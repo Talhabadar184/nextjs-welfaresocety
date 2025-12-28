@@ -1,35 +1,58 @@
-const { execSync } = require('child_process');
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
+dotenv.config();
 
-/**
- * migrate-vercel.js
- * 
- * This script is triggered during the Vercel build process to ensure
- * that the Supabase database is up-to-date with the latest migrations.
- */
+import * as path from 'path';
+import { Pool } from 'pg';
+import { promises as fs } from 'fs';
+import {
+    Kysely,
+    Migrator,
+    PostgresDialect,
+    FileMigrationProvider,
+} from 'kysely';
 
-console.log('--- Starting Database Migrations ---');
+console.log('DEBUG: Loaded DATABASE_URL:', process.env.DATABASE_URL);
 
-try {
-    // Execute the existing TypeScript migration script using npx tsx
-    // This ensures that we use the same migration logic as the development environment.
-    execSync('npx tsx scripts/migrate.ts', {
-        stdio: 'inherit',
-        env: { ...process.env } // Pass through environment variables (including DATABASE_URL)
+async function migrateToLatest() {
+    const pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl:
+            process.env.NODE_ENV === 'production'
+                ? { rejectUnauthorized: false }
+                : false,
     });
 
-    console.log('--- Migrations Completed Successfully ---');
-
-    console.log('--- Starting Database Seeding ---');
-    execSync('npx tsx scripts/seed.ts', {
-        stdio: 'inherit',
-        env: { ...process.env }
+    const db = new Kysely({
+        dialect: new PostgresDialect({ pool }),
     });
-    console.log('--- Seeding Completed Successfully ---');
-} catch (error) {
-    console.error('!!! Migration or Seeding Failed !!!');
-    console.error('Error Details:', error.message);
 
-    // Exit with a non-zero code to fail the Vercel build if migrations fail.
-    // This prevents deploying a broken application state.
-    process.exit(1);
+    const migrator = new Migrator({
+        db,
+        provider: new FileMigrationProvider({
+            fs,
+            path,
+            migrationFolder: path.join(__dirname, '../migrations'),
+        }),
+    });
+
+    const { error, results } = await migrator.migrateToLatest();
+
+    results?.forEach((it) => {
+        if (it.status === 'Success') {
+            console.log(`✅ migration "${it.migrationName}" executed`);
+        } else {
+            console.error(`❌ migration "${it.migrationName}" failed`);
+        }
+    });
+
+    if (error) {
+        console.error('❌ Migration failed');
+        console.error(error);
+        process.exit(1);
+    }
+
+    await db.destroy();
 }
+
+migrateToLatest();

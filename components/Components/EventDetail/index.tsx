@@ -1,6 +1,6 @@
 import { FaInstagram, FaFacebook, FaLinkedin, FaCalendarAlt, FaChevronLeft } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 // Markdown to HTML helper function
 const markdownToHtml = (markdown: string) => {
@@ -37,12 +37,33 @@ const EventDetail = ({ eventData }: { eventData?: any }) => {
   const subImages = sub_images;
   const socials = { facebook, instagram, linkedin };
 
+  const backBtnVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 }
+  };
+
+  const mainImageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1 }
+  };
+
+  const galleryVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const contentVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.2 } }
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-6 pb-24 text-white">
       {/* Back Button */}
       <motion.button
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
+        variants={backBtnVariants}
+        initial="hidden"
+        animate="visible"
         onClick={() => router.back()}
         className="group flex items-center gap-3 text-white/50 hover:text-[#FFA016] transition-colors mb-12 uppercase font-black text-[10px] tracking-[0.2em]"
       >
@@ -56,8 +77,9 @@ const EventDetail = ({ eventData }: { eventData?: any }) => {
         {/* Left Column: Image & Gallery */}
         <div className="lg:col-span-7">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            variants={mainImageVariants}
+            initial="hidden"
+            animate="visible"
             className="rounded-3xl overflow-hidden relative shadow-2xl border border-white/5 mb-8 group"
           >
             <img src={image} alt={title} className="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-1000" />
@@ -75,8 +97,9 @@ const EventDetail = ({ eventData }: { eventData?: any }) => {
                 {subImages.map((img: string, index: number) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={galleryVariants}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     className="rounded-2xl overflow-hidden aspect-square border border-white/5 group"
@@ -96,9 +119,9 @@ const EventDetail = ({ eventData }: { eventData?: any }) => {
         {/* Right Column: Content */}
         <div className="lg:col-span-12 xl:col-span-5 flex flex-col pt-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="px-4 py-1.5 bg-[#FFA016]/10 border border-[#FFA016]/20 rounded-full flex items-center gap-2">

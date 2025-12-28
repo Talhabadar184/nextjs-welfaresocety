@@ -1,20 +1,18 @@
-'use client';
-
 import React from 'react';
 import RegisterLayout from '../../components/Layouts/RegisterLayout';
 import RegistrationForm from '../../components/Components/RegistrationForm';
-import Collage from '../../components/Components/Collage';
-import ReusableBar from '../../components/ReusableComponents/ReusableBar';
+import HierarchyHero from '../../components/Components/HierarchyHero';
 
 const Register = () => {
     return (
-        <>
-            <RegisterLayout>
-                <Collage />
-                <ReusableBar text="Register Now" />
-                <RegistrationForm />
-            </RegisterLayout>
-        </>
+        <RegisterLayout>
+            <HierarchyHero
+                title="Registration"
+                subtitle="Join the legacy of innovation"
+                backgroundImage="/group3.jpg"
+            />
+            <RegistrationForm />
+        </RegisterLayout>
     );
 };
 

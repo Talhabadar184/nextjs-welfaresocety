@@ -349,7 +349,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { FaTimes, FaArrowRight } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -422,10 +422,10 @@ const sliderSettings = {
 };
 
 const FoundingMembers = () => {
-  const [selectedMember, setSelectedMember] = useState(null);
+  const [selectedMember, setSelectedMember] = useState<any>(null);
   const [showOverlay, setShowOverlay] = useState(false);
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.5 });
-  const sliderRef = React.useRef();
+  const sliderRef = React.useRef<Slider>(null);
 
   useEffect(() => {
     if (inView) {
@@ -434,6 +434,21 @@ const FoundingMembers = () => {
       return () => clearTimeout(timer);
     }
   }, [inView]);
+
+  const listVariants: Variants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
 
   return (
     <div
@@ -468,25 +483,14 @@ const FoundingMembers = () => {
         className="w-full max-w-6xl mx-auto gap-4"
         initial="hidden"
         animate="show"
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.2,
-              delayChildren: 2,
-            },
-          },
-        }}
+        variants={listVariants}
       >
         <Slider ref={sliderRef} {...sliderSettings}>
           {members.map((member, index) => (
             <motion.div
               key={index}
               className="px-2"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                show: { opacity: 1, y: 0, transition: { duration: 1 } },
-              }}
+              variants={itemVariants}
             >
               <div
                 className="bg-gradient-to-br from-black to-zinc-800 rounded-2xl shadow-2xl cursor-pointer overflow-hidden hover:scale-105 transition-all duration-300 border border-white/10 group"
@@ -518,32 +522,34 @@ const FoundingMembers = () => {
       </motion.div>
 
       {/* Modal */}
-      {selectedMember && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center px-4 z-50">
-          <div className="bg-gradient-to-br from-zinc-900 to-black w-full max-w-3xl flex flex-col sm:flex-row rounded-2xl shadow-2xl overflow-hidden relative border border-white/20">
-            <img
-              src={selectedMember.image}
-              alt={selectedMember.name}
-              className="w-full sm:w-1/3 h-64 object-cover"
-            />
+      {
+        selectedMember && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center px-4 z-50">
+            <div className="bg-gradient-to-br from-zinc-900 to-black w-full max-w-3xl flex flex-col sm:flex-row rounded-2xl shadow-2xl overflow-hidden relative border border-white/20">
+              <img
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                className="w-full sm:w-1/3 h-64 object-cover"
+              />
 
-            <div className="p-8 flex-1 text-white">
-              <div className="w-16 h-1 bg-gradient-to-r from-[#FFA016] to-[#ff8c00] mb-4"></div>
-              <h3 className="text-3xl font-black uppercase">{selectedMember.name}</h3>
-              <p className="text-[#FFA016] text-xl font-bold uppercase mb-4">{selectedMember.position}</p>
-              <p className="text-gray-300 text-md leading-relaxed">{selectedMember.description}</p>
+              <div className="p-8 flex-1 text-white">
+                <div className="w-16 h-1 bg-gradient-to-r from-[#FFA016] to-[#ff8c00] mb-4"></div>
+                <h3 className="text-3xl font-black uppercase">{selectedMember.name}</h3>
+                <p className="text-[#FFA016] text-xl font-bold uppercase mb-4">{selectedMember.position}</p>
+                <p className="text-gray-300 text-md leading-relaxed">{selectedMember.description}</p>
+              </div>
+
+              <button
+                className="absolute top-4 right-4 text-white hover:text-[#FFA016] transition-colors"
+                onClick={() => setSelectedMember(null)}
+              >
+                <FaTimes className="text-2xl" />
+              </button>
             </div>
-
-            <button
-              className="absolute top-4 right-4 text-white hover:text-[#FFA016] transition-colors"
-              onClick={() => setSelectedMember(null)}
-            >
-              <FaTimes className="text-2xl" />
-            </button>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+    </div >
   );
 };
 

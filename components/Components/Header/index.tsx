@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +35,12 @@ const Header = () => {
     { name: 'Events', path: '/events' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const mobileMenuVariants: Variants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: 'auto' },
+    exit: { opacity: 0, height: 0 }
+  };
 
   return (
     <header
@@ -119,7 +125,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2.5 bg-gradient-to-r from-[#FFA016] to-[#ff8c00] text-white text-xs font-black uppercase tracking-widest rounded-full shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all"
             >
-              Join Us
+              Register
             </motion.button>
           </Link>
         </nav>
@@ -140,9 +146,10 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-[#FFA016]/20 overflow-hidden"
           >
             <div className="flex flex-col p-8 space-y-6">
@@ -175,7 +182,7 @@ const Header = () => {
               ))}
               <Link href="/register" onClick={toggleMenu} className="pt-4">
                 <button className="w-full py-4 bg-[#FFA016] text-white font-black uppercase text-lg rounded-xl">
-                  Register Now
+                  Register
                 </button>
               </Link>
 

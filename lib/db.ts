@@ -27,9 +27,19 @@ export interface RegistrationsTable {
     created_at: Generated<Date>
 }
 
+export interface ContactMessagesTable {
+    id: Generated<number>
+    name: string
+    email: string
+    subject: string
+    message: string
+    created_at: Generated<Date>
+}
+
 export interface Database {
     events: EventsTable
     registrations: RegistrationsTable
+    contact_messages: ContactMessagesTable
 }
 
 export const db = new Kysely<Database>({

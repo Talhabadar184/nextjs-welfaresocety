@@ -1,123 +1,105 @@
-// import React from 'react';
-// import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
+'use client';
 
-// const EventCard = ({ image, title, date, description, onSeeMore, socials = {} }) => {
-//   return (
-//     <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-xl overflow-hidden shadow-md p-6 gap-6 w-full max-w-7xl mx-auto border border-gray-200">
-      
-//       {/* Event Image */}
-//       <div className="w-full md:w-1/3">
-//         <img
-//           src={image}
-//           alt={title}
-//           className="rounded-lg object-cover w-full h-[350px]"
-//         />
-//       </div>
-
-//       {/* Text Content */}
-//       <div className="flex flex-col w-full md:w-2/3 justify-between gap-4">
-//         <div>
-//           <h2 className="text-2xl font-bold mb-2">{title}</h2>
-//           <p className="text-sm text-gray-600 font-medium">{date}</p>
-//           <p className="mt-2 text-gray-800">{description}</p>
-//         </div>
-
-//         {/* Footer: See more + Socials */}
-//         <div className="flex justify-between items-center pt-4 border-t border-gray-300 mt-4">
-//           {/* Social Icons */}
-//           <div className="flex space-x-4 text-xl text-[#FFA016]">
-//             {socials.instagram && (
-//               <a href={socials.instagram} target="_blank" rel="noopener noreferrer">
-//                 <FaInstagram />
-//               </a>
-//             )}
-//             {socials.facebook && (
-//               <a href={socials.facebook} target="_blank" rel="noopener noreferrer">
-//                 <FaFacebook />
-//               </a>
-//             )}
-//             {socials.linkedin && (
-//               <a href={socials.linkedin} target="_blank" rel="noopener noreferrer">
-//                 <FaLinkedin />
-//               </a>
-//             )}
-//           </div>
-
-//           {/* See More */}
-//           <button
-//             onClick={onSeeMore}
-//             className="text-[#FFA016] font-semibold hover:underline"
-//           >
-//             See more →
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default EventCard;
 import React from 'react';
-import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaInstagram, FaFacebook, FaLinkedin, FaArrowRight } from 'react-icons/fa';
 
-const EventCard = ({ image, title, date, description, onSeeMore, socials = {} }) => {
-  return (
-    <div className="flex flex-col md:flex-row items-center rounded-xl overflow-hidden p-6 gap-6 w-full max-w-7xl mx-auto">
-      
-      {/* Event Image */}
-      <div className="w-full md:w-1/3 overflow-hidden rounded-lg">
-  <img
-    src={image}
-    alt={title}
-    className="rounded-lg object-cover w-full h-[350px] transform transition-transform duration-300 hover:scale-105"
-  />
-</div>
+interface EventCardProps {
+    image: string;
+    title: string;
+    date: string;
+    description: string;
+    socials?: {
+        instagram?: string;
+        facebook?: string;
+        linkedin?: string;
+    };
+    onSeeMore: () => void;
+}
 
+const EventCard = ({
+    image,
+    title,
+    date,
+    description,
+    socials,
+    onSeeMore,
+}: EventCardProps) => {
+    return (
+        <section className="bg-white py-12 px-6 md:px-12 border-b border-gray-100 last:border-0">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
 
-      {/* Text Content */}
-      <div className="flex flex-col w-full md:w-2/3 justify-between gap-4">
-        <div>
-          <h2 className="text-black text-2xl font-bold mb-2">{title}</h2>
-          <p className="text-sm text-gray-600 font-medium">{date}</p>
-          <p className="mt-2 text-gray-800">{description}</p>
-        </div>
+                {/* Image Section */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="w-full md:w-2/5 group"
+                >
+                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-xl">
+                        <img
+                            src={image}
+                            alt={title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                </motion.div>
 
-        {/* Gradient Line */}
-        <div className="my-6 h-[2px] bg-gradient-to-r from-black to-[#FFA016]"></div>
+                {/* Content Section */}
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="w-full md:w-3/5"
+                >
+                    <div className="flex flex-col">
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="text-[#FFA016] text-sm font-black uppercase tracking-widest">{date}</span>
+                            <div className="h-[1px] flex-1 bg-gray-100" />
+                        </div>
 
-        {/* Footer: Socials + See More */}
-        <div className="flex justify-between items-center">
-          {/* Social Icons */}
-          <div className="flex space-x-4 text-xl text-[#FFA016]">
-            {socials.instagram && (
-              <a href={socials.instagram} target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-              </a>
-            )}
-            {socials.facebook && (
-              <a href={socials.facebook} target="_blank" rel="noopener noreferrer">
-                <FaFacebook />
-              </a>
-            )}
-            {socials.linkedin && (
-              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
-              </a>
-            )}
-          </div>
+                        <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-black mb-4 group-hover:text-[#FFA016] transition-colors">
+                            {title}
+                        </h2>
 
-          {/* See More */}
-          <button
-            onClick={onSeeMore}
-            className="text-[#FFA016] font-semibold hover:underline"
-          >
-            See more →
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+                        <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 line-clamp-3">
+                            {description}
+                        </p>
+
+                        <div className="flex items-center justify-between">
+                            <button
+                                onClick={onSeeMore}
+                                className="flex items-center gap-2 text-black font-black uppercase text-sm tracking-widest group hover:text-[#FFA016] transition-all"
+                            >
+                                See Details <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+
+                            {socials && (
+                                <div className="flex items-center gap-4">
+                                    {socials.instagram && (
+                                        <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFA016] transition-colors">
+                                            <FaInstagram size={20} />
+                                        </a>
+                                    )}
+                                    {socials.facebook && (
+                                        <a href={socials.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFA016] transition-colors">
+                                            <FaFacebook size={20} />
+                                        </a>
+                                    )}
+                                    {socials.linkedin && (
+                                        <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFA016] transition-colors">
+                                            <FaLinkedin size={20} />
+                                        </a>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
 };
 
 export default EventCard;
-

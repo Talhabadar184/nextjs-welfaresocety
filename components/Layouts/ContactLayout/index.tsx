@@ -1,24 +1,20 @@
-import React from 'react';
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
-
+import HierarchyHero from '../../Components/HierarchyHero';
 
 const ContactLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
 
-
-      {/* Header removed (in RootLayout) */}
-      <div className="relative z-10 bg-gradient-to-r from-black to-[#FFA016]">
-        {/* <Header /> */}
-      </div>
+      {/* Premium Cinematic Hero */}
+      <HierarchyHero
+        title="Contact Us"
+        subtitle="We're here to help you innovate"
+        backgroundImage="/contacthero.jpg"
+      />
 
       {/* Page Content */}
-      <main className="relative z-10 flex-grow bg-white">
+      <main className="relative z-10 flex-grow">
         {children}
       </main>
-
-      {/* Footer removed (in RootLayout) */}
     </div>
   );
 };

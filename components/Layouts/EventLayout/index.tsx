@@ -1,32 +1,31 @@
 import React from 'react';
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
-import EventImageSlider from '../../Components/EventImgaeSlider';
+import HierarchyHero from '../../Components/HierarchyHero';
 
-const eventImages = [
-  "/group.jpg",
-  "fyp1.jpg",
-  '/fyp3.jpg',
+interface EventLayoutProps {
+  children: React.ReactNode;
+  title?: string;
+  subtitle?: string;
+}
 
-];
-
-const EventLayout = ({ children }: { children: React.ReactNode }) => {
+const EventLayout = ({
+  children,
+  title = "Events & Updates",
+  subtitle = "Capturing the moments of innovation"
+}: EventLayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-white overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
 
-      {/* Image Slider Section (in normal flow) */}
-      <div className="w-100vh h-[700px]">
-        <EventImageSlider images={eventImages} />
-      </div>
-
-      {/* Header removed (in RootLayout) */}
+      {/* Premium Cinematic Hero with Same Animations */}
+      <HierarchyHero
+        title={title}
+        subtitle={subtitle}
+        backgroundImage="/group.jpg"
+      />
 
       {/* Page Content */}
       <main className="relative z-10 flex-grow">
         {children}
       </main>
-
-      {/* Footer removed (in RootLayout) */}
     </div>
   );
 };

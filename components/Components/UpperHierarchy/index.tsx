@@ -4,86 +4,54 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 
-const hierarchyMembers = [
-    {
-        name: "Ali Usman Khan",
-        position: "President",
-        image: "/ali.jpg",
-        description: "Muhammad Zafar Ul Haq is the Founder and Chair of the IEEE Computer Society UCP Chapter, known for his visionary leadership and community impact.",
-    },
+interface Member {
+    name: string;
+    position: string;
+    image: string;
+    description: string;
+}
 
-    {
-        name: "Rabail Fiaz",
-        position: "Vice President",
-        image: "/rabail2.jpg",
-        description: "Ali Usman Khan Durrani, a Computer Science student at UCP, is passionate about leadership and coding, serving as Vice Chair of IEEE CS.",
-    },
-    {
-        name: "Abdul Moeiz Majid Khan",
-        position: "Vice President",
-        image: "/abdulmoiz.jpg",
-        description: "Ali Usman Khan Durrani, a Computer Science student at UCP, is passionate about leadership and coding, serving as Vice Chair of IEEE CS.",
-    },
+interface UpperHierarchyProps {
+    title: string;
+    subtitle?: string;
+    members: Member[];
+    showTitle?: boolean;
+}
 
-    {
-        name: "Eisha Kahalid",
-        position: "Joint Secretary",
-        image: "/eisha.jpg",
-        description: "Ayaan Zaman Khattak, Executive Director, is a strategic leader known for managing major events.",
-    },
-    {
-        name: "Anwar Karim",
-        position: "General Secretary",
-        image: "/anwar2.jpg",
-        description: "Abdul Moeiz, Secretary of IEEE CS UCP Chapter, is a dedicated Computer Science student passionate about community building.",
-    },
-    {
-        name: "Junita Azhar",
-        position: "Treasurer",
-        image: "/junita.jpg",
-        description: "Anwar Karim, Treasurer of IEEE CS UCP Chapter, is dedicated to tech-driven community growth.",
-    },
-    {
-        name: "Hassan Jamshaid",
-        position: "Webmaster",
-        image: "/me.jpg",
-        description: "Hassan Jamshaid, Webmaster of IEEE CS UCP Chapter, is a skilled Full Stack Developer who ensures a responsive, user-focused website.",
-    },
-
-    {
-        name: "Bismah Irshad",
-        position: "Coordinator",
-        image: "/bismah.jpg",
-        description: "Rabail Fiaz, Coordinator of IEEE CS UCP Chapter, has developed strong leadership and communication skills.",
-    },
-    {
-        name: "Qasim Naseer",
-        position: "Coordinator",
-        image: "/qasim.jpg",
-        description: "Description for the 8th member of the leadership team.",
-    },
-];
-
-const UpperHierarchy = () => {
-    const [selectedMember, setSelectedMember] = useState<typeof hierarchyMembers[0] | null>(null);
+const UpperHierarchy = ({
+    title,
+    subtitle,
+    members,
+    showTitle = true
+}: UpperHierarchyProps) => {
+    const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
     return (
         <section className="bg-white py-20 px-8">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl sm:text-5xl font-black uppercase mb-4 text-black">
-                        Leadership <span className="text-[#FFA016]">2025-26</span>
-                    </h2>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">Meet our executive team driving innovation and excellence</p>
-                </div>
+                {showTitle ? (
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl sm:text-5xl font-black uppercase mb-4 text-black">
+                            {title.split(' ')[0]} <span className="text-[#FFA016]">{title.split(' ').slice(1).join(' ')}</span>
+                        </h2>
+                        {subtitle && <p className="text-gray-600 text-lg max-w-2xl mx-auto">{subtitle}</p>}
+                    </div>
+                ) : (
+                    <div className="flex flex-col mb-16">
+                        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black">
+                            {title}
+                        </h2>
+                        <div className="w-20 h-1 bg-[#FFA016] mt-4 rounded-full" />
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {hierarchyMembers.map((member, index) => (
+                    {members.map((member, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false, amount: 0.1 }}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
                             className="group cursor-pointer"
                             onClick={() => setSelectedMember(member)}
@@ -109,7 +77,7 @@ const UpperHierarchy = () => {
 
             {/* Modal */}
             {selectedMember && (
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center px-4 z-50" onClick={() => setSelectedMember(null)}>
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center px-4 z-[999]" onClick={() => setSelectedMember(null)}>
                     <div className="bg-gradient-to-br from-zinc-900 to-black w-full max-w-3xl flex flex-col sm:flex-row rounded-2xl shadow-2xl overflow-hidden relative border border-white/20" onClick={(e) => e.stopPropagation()}>
                         <img
                             src={selectedMember.image}

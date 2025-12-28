@@ -1,25 +1,32 @@
-import React from 'react';
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
-import HierarchySection from '../../Components/HierarchySection';
+import HierarchyHero from '../../Components/HierarchyHero';
 
-const HierarchyLayout = ({ children }: { children: React.ReactNode }) => {
+interface HierarchyLayoutProps {
+  children: React.ReactNode;
+  title: string;
+  subtitle?: string;
+  backgroundImage?: string;
+  hideOverlay?: boolean;
+}
+
+const HierarchyLayout = ({ children, title, subtitle, backgroundImage = "/g9.jpg", hideOverlay = false }: HierarchyLayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
 
-      {/* Background section (part of normal flow now) */}
-      <HierarchySection />
-
-      {/* Header removed (in RootLayout) */}
+      {/* Premium Cinematic Hero with About Animations */}
+      <HierarchyHero
+        title={title}
+        subtitle={subtitle}
+        backgroundImage={backgroundImage}
+        hideOverlay={hideOverlay}
+      />
 
       {/* Page Content */}
       <main className="relative z-10 flex-grow">
         {children}
       </main>
-
-      {/* Footer removed (in RootLayout) */}
     </div>
   );
 };
 
 export default HierarchyLayout;
+

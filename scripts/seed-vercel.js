@@ -417,7 +417,7 @@ const db = new Kysely({
     dialect: new PostgresDialect({ pool }),
 });
 
-// Seed data
+// Seed data (only showing 2 events, add the rest)
 const events = [
     {
         slug: 'Codex',
@@ -555,7 +555,7 @@ const events = [
     }
 ]
 
-// Idempotent seed function
+// Idempotent seed
 async function seed() {
     console.log('🌱 Starting database seed...');
 
@@ -564,7 +564,7 @@ async function seed() {
             await db
                 .insertInto('events')
                 .values(event)
-                .onConflict('slug')  // ✅ pass column name directly
+                .onConflict((oc) => oc.column('slug')) // ✅ correct syntax now
                 .doUpdateSet({
                     title: event.title,
                     date: event.date,

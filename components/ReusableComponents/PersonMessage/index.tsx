@@ -1,6 +1,17 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaLinkedin } from "react-icons/fa6";
+
+interface PersonMessageProps {
+  name: string;
+  title: string;
+  image: string;
+  message: string;
+  linkedin?: string;
+  heading?: string;
+  logo?: string;
+}
+
 const PersonMessage = ({
   name,
   title,
@@ -9,14 +20,24 @@ const PersonMessage = ({
   linkedin,
   heading = "Message",
   logo = "/Logo2.png",
-}) => {
+}: PersonMessageProps) => {
+  const leftVariants: Variants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
+
+  const rightVariants: Variants = {
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
   return (
     <section className="bg-white py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10">
         {/* Left Side: Image, Name, LinkedIn */}
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          variants={leftVariants}
+          initial="hidden"
+          animate="visible"
           transition={{ duration: 1.3 }}
           className="flex flex-col items-center"
         >
@@ -49,8 +70,9 @@ const PersonMessage = ({
 
         {/* Right Side: Message and Description */}
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          variants={rightVariants}
+          initial="hidden"
+          animate="visible"
           transition={{ duration: 1.3 }}
           className="flex-1"
         >

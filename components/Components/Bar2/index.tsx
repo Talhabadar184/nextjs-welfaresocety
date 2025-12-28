@@ -141,7 +141,7 @@
 
 import React from "react";
 import { SiIeee } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 // Logo data with updated sizes
 const logos = [
@@ -182,7 +182,7 @@ const logos = [
 ];
 
 const LogoScroller = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -192,7 +192,7 @@ const LogoScroller = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.8, filter: "blur(10px)" },
     visible: {
       opacity: 1,

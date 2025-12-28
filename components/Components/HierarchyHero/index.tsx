@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface HierarchyHeroProps {
@@ -36,6 +36,18 @@ const HierarchyHero = ({ title, subtitle, backgroundImage, hideOverlay = false }
         };
     }, [inView]);
 
+    const contentVariants: Variants = {
+        hidden: { opacity: 0, y: 30, filter: "blur(15px)", scale: 0.8 },
+        visible: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
+        exit: {
+            opacity: 0,
+            y: -40,
+            filter: "blur(20px)",
+            scale: 1.2,
+            transition: { duration: 0.8, ease: "easeInOut" }
+        }
+    };
+
     return (
         <section ref={ref} className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center">
             {/* Parallax Background */}
@@ -62,15 +74,10 @@ const HierarchyHero = ({ title, subtitle, backgroundImage, hideOverlay = false }
                 {showContent && (
                     <motion.div
                         key="hierarchy-hero-content"
-                        initial={{ opacity: 0, y: 30, filter: "blur(15px)", scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
-                        exit={{
-                            opacity: 0,
-                            y: -40,
-                            filter: "blur(20px)",
-                            scale: 1.2,
-                            transition: { duration: 0.8, ease: "easeInOut" }
-                        }}
+                        variants={contentVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="relative z-40 flex flex-col items-center justify-center p-4 text-center max-w-6xl"
                     >

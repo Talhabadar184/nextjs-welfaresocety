@@ -1,6 +1,14 @@
-// src/Components/PersonMessage2.jsx
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
+interface PersonMessage2Props {
+  name: string;
+  title: string;
+  image: string;
+  linkedin?: string;
+  heading?: string;
+  message: string;
+  logo?: string;
+}
 
 const PersonMessage2 = ({
   name,
@@ -10,14 +18,24 @@ const PersonMessage2 = ({
   heading = "Message",
   message,
   logo = "/Logo2.png",
-}) => {
+}: PersonMessage2Props) => {
+  const rightVariants: Variants = {
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
+
+  const leftVariants: Variants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
   return (
     <section className="bg-white py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-10">
         {/* Right Side: Image, Name, LinkedIn */}
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          variants={rightVariants}
+          initial="hidden"
+          animate="visible"
           transition={{ duration: 1.3 }}
           className="flex flex-col items-center"
         >
@@ -46,8 +64,9 @@ const PersonMessage2 = ({
 
         {/* Left Side: Message and Description */}
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          variants={leftVariants}
+          initial="hidden"
+          animate="visible"
           transition={{ duration: 1.3 }}
           className="flex-1"
         >

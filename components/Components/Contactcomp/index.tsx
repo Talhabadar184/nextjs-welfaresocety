@@ -21,6 +21,7 @@ const Contactcomp = () => {
       setTimeout(() => setStatus('idle'), 5000);
     },
     onError: (error) => {
+      console.error('TRPC Error:', error);
       setStatus('error');
       setErrorMessage(error.message);
       setTimeout(() => setStatus('idle'), 5000);
@@ -36,23 +37,28 @@ const Contactcomp = () => {
 
   const contacts = [
     {
-      title: 'Chair',
-      name: 'Muhammad Zafar ul Haq',
-      phone: '+92 324 1557130',
-      email: 'chair@ieeecsucp.org'
+      title: 'President',
+      name: 'Ali Usman Khan',
+      phone: '+92 321 5353105',
+      // email: 'chair@ieeecsucp.org'
     },
     {
-      title: 'Vice Chair',
-      name: 'Ali Usman Khan Durani',
-      phone: '+92 321 5353105',
-      email: 'v.chair@ieeecsucp.org'
+      title: 'Vice-President',
+      name: 'Abdul Moeiz Khan',
+      phone: '+92 304 4869577',
+      // email: 'v.chair@ieeecsucp.org'
     },
     {
       title: 'General Secretary',
-      name: 'Abdul Moiez Majid Khan',
-      phone: '+92 304 4869577',
-      email: 'gen.sec@ieeecsucp.org'
+      name: 'Anwar Karim',
+      phone: '+92 355 5479832',
+      // email: 'gen.sec@ieeecsucp.org'
     },
+    {
+      title: 'Coordinator',
+      name: 'Qasim Naseer',
+      phone: '+92 309 4671771',
+    }
   ];
 
   return (
@@ -92,10 +98,10 @@ const Contactcomp = () => {
                         <FaPhoneAlt className="text-[#FFA016] text-xs" />
                         {contact.phone}
                       </a>
-                      <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
+                      {/* <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
                         <FaEnvelope className="text-[#FFA016] text-xs" />
                         {contact.email}
-                      </a>
+                      </a> */}
                     </div>
                   </motion.div>
                 ))}

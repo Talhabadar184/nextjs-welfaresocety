@@ -2,7 +2,8 @@ import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 dotenv.config();
 
-import * as path from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { Pool } from 'pg';
 import { promises as fs } from 'fs';
 import {
@@ -11,6 +12,10 @@ import {
     PostgresDialect,
     FileMigrationProvider,
 } from 'kysely';
+
+// ✅ ESM replacement for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log('DEBUG: Loaded DATABASE_URL:', process.env.DATABASE_URL);
 

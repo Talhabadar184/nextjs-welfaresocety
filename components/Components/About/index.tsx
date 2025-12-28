@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const backgroundImage = './a2.jpg';
+const backgroundImage = '/a2.jpg';
 
 const AboutUsOverlaySection = () => {
   return (

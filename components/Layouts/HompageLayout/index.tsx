@@ -507,7 +507,7 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
             >
               <div className="text-center w-full flex flex-col items-center">
                 <motion.h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4 leading-tight bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] whitespace-nowrap overflow-visible p-2"
+                  className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4 leading-tight bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] whitespace-normal sm:whitespace-nowrap overflow-visible p-2"
                 >
                   IEEE Computer Society UCP
                 </motion.h1>

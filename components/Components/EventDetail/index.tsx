@@ -158,7 +158,7 @@ const EventDetail = ({ eventData }: { eventData?: any }) => {
                   </a>
                 )}
                 {socials?.linkedin && (
-                  <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded-full hover:bg-[#FFA016] hover:text-black transition-all">
+                  <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded-full text-[#FFA016] hover:bg-[#FFA016] hover:text-black transition-all">
                     <FaLinkedin size={20} />
                   </a>
                 )}

@@ -45,8 +45,7 @@ const HierarchyTeamSection = ({ title, members, showOverlay = true }: HierarchyT
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.1 }}
                             transition={{ delay: index * 0.05, duration: 0.5 }}
-                            className="group cursor-pointer relative"
-                            onClick={() => setSelectedMember(member)}
+                            className="group relative"
                         >
                             <div className="relative overflow-hidden rounded-xl bg-zinc-900/50 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-[#FFA016]/50 hover:shadow-[0_0_30px_rgba(255,160,22,0.15)] group-hover:-translate-y-2">
                                 <div className="aspect-[4/5] overflow-hidden">

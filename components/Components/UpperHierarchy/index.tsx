@@ -53,8 +53,7 @@ const UpperHierarchy = ({
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.1 }}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="group cursor-pointer"
-                            onClick={() => setSelectedMember(member)}
+                            className="group"
                         >
                             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-zinc-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
                                 <div className="aspect-square overflow-hidden">

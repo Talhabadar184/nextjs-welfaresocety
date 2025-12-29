@@ -72,7 +72,7 @@ const LeadershipCard = ({
                                 rel="noopener noreferrer"
                                 className="mt-8 self-start p-3 bg-white/5 hover:bg-[#FFA016] text-white hover:text-black rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10"
                             >
-                                <FaLinkedin className="text-xl md:text-2xl" />
+                                <FaLinkedin className="text-[#FFA016] text-xl md:text-2xl" />
                             </a>
                         )}
                     </div>

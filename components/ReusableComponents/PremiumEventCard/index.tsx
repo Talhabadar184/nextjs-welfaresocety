@@ -78,7 +78,7 @@ const PremiumEventCard = ({ image, title, date, description, socials, onSeeMore 
                                 </a>
                             )}
                             {socials.linkedin && (
-                                <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#FFA016] transition-colors">
+                                <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#FFA016] hover:text-white transition-colors">
                                     <FaLinkedin size={16} />
                                 </a>
                             )}

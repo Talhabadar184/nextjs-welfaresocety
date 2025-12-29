@@ -111,7 +111,7 @@ const UpcomingEvents = () => {
 
 
         {/* Right Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4 h-[70vh] perspective-1000">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-4 h-auto sm:h-[70vh] perspective-1000">
           {/* Box 1 (Event 1) - Purple */}
           <div className="bg-gradient-to-br from-[#4B0082] to-[#6B21A8] text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

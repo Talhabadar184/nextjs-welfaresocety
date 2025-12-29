@@ -59,6 +59,43 @@ const hierarchyMembers = [
     },
 ];
 
+const teamManagement = [
+    { name: "Muhammad Wajeeh ", position: "Director", image: "/wajeeh.JPG", description: "Leadership description here." },
+    { name: "Fahad Abid", position: "Co-Director", image: "/Fahad.JPG", description: "Leadership description here." },
+];
+const teamMarketing = [
+    { name: "Shafay Sarwar", position: "Director", image: "/shafay.JPG", description: "Leadership description here." },
+    { name: "Syed Muneeb Shah", position: "Co-Director", image: "/muneeb.JPG", description: "Leadership description here." },
+];
+const teamCreative = [
+    { name: "Areeba Mehtab", position: "Director", image: "/areeba.JPG", description: "Leadership description here." },
+    { name: "Javeria Hussain", position: "Co-Director", image: "/javeria.JPG", description: "Leadership description here." },
+];
+const teamMedia = [
+    { name: "Zahid Sultan", position: "Director", image: "/zahid.JPG", description: "Leadership description here." },
+    { name: "Muhammad Abaidullah", position: "Co-Director", image: "/abaid.JPG", description: "Leadership description here." },
+];
+const teamGraphics = [
+    { name: "Saqib Butt", position: "Director", image: "/saqib.JPG", description: "Leadership description here." },
+    { name: "Abdullah Naveed", position: "Co-Director", image: "/abd.JPG", description: "Leadership description here." },
+];
+const teamLogistics = [
+    { name: "Arslan Mustafa", position: "Director", image: "/Arslan.JPG", description: "Leadership description here." },
+    { name: "M Farukh Mahmood", position: "Co-Director", image: "/farukh.JPG", description: "Leadership description here." },
+];
+const teamCommunications = [
+    { name: "Ali Husnain", position: "Director", image: "/hus.JPG", description: "Leadership description here." },
+    { name: "Abdul Rafay Waheed", position: "Co-Director", image: "/rafay.JPG", description: "Leadership description here." },
+];
+const teamHackathon = [
+    { name: "Hamza Asim", position: "Director", image: "/hamza.JPG", description: "Leadership description here." },
+    { name: "Muhammad Faseeh", position: "Co-Director", image: "/faseeh.JPG", description: "Leadership description here." },
+];
+const teamPublications = [
+    { name: "Abdullah Habib", position: "Director", image: "/abd2.JPG", description: "Leadership description here." },
+    // { name: "Member Name", position: "Co-Director", image: "/group.jpg", description: "Leadership description here." },
+];
+
 const Hierarchy2526 = () => {
     return (
         <HierarchyLayout
@@ -74,15 +111,51 @@ const Hierarchy2526 = () => {
                     showOverlay={false}
                 />
 
-                <div className="py-24 text-center border-t border-white/5 bg-zinc-950/50 backdrop-blur-sm mt-12 mx-6 md:mx-12 rounded-3xl border border-white/10">
-                    <div className="w-16 h-1 bg-[#FFA016] mb-8 mx-auto rounded-full" />
-                    <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">
-                        Full Cabinet <span className="text-[#FFA016]">Reveal</span> Coming Soon
-                    </h3>
-                    <p className="text-gray-400 text-lg md:text-xl italic max-w-2xl mx-auto px-6">
-                        "The next generation of leaders is preparing to carry the torch of excellence."
-                    </p>
-                </div>
+                <HierarchyTeamSection
+                    title="Team Management"
+                    members={teamManagement}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Marketing"
+                    members={teamMarketing}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Creative"
+                    members={teamCreative}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Media"
+                    members={teamMedia}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Graphics"
+                    members={teamGraphics}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Logistics"
+                    members={teamLogistics}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Communications"
+                    members={teamCommunications}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Hackathon"
+                    members={teamHackathon}
+                    showOverlay={false}
+                />
+                <HierarchyTeamSection
+                    title="Team Publications"
+                    members={teamPublications}
+                    showOverlay={false}
+                />
             </div>
         </HierarchyLayout>
     );

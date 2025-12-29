@@ -88,7 +88,7 @@ const EventCard = ({
                                         </a>
                                     )}
                                     {socials.linkedin && (
-                                        <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFA016] transition-colors">
+                                        <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#FFA016] hover:text-black transition-colors">
                                             <FaLinkedin size={20} />
                                         </a>
                                     )}

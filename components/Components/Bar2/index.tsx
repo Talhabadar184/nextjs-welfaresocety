@@ -156,29 +156,17 @@ const logos = [
     ),
   },
   {
-    name: "IEEE CS",
+    name: "UCP Welfare Society",
     icon: (
       <img
-        src="Logo2.png"
+        src="uws white.png"
         alt="IEEE CS"
-        className="w-14 sm:w-16 h-auto object-contain"
+        className="w-24 sm:w-28 h-auto object-contain"
       />
     ),
   },
-  {
-    name: "CS Logo",
-    icon: (
-      <img
-        src="cslogo.png"
-        alt="CS Logo"
-        className="w-20 sm:w-28 h-auto object-contain brightness-0 invert"
-      />
-    ),
-  },
-  {
-    name: "IEEE",
-    icon: <SiIeee className="text-white text-6xl sm:text-8xl" />,
-  },
+  
+  
 ];
 
 const LogoScroller = () => {

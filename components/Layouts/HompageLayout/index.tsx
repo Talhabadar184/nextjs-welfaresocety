@@ -423,22 +423,21 @@
 // };
 
 // export default HomepageLayout;
-
 import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Typewriter } from 'react-simple-typewriter';
 import Herobox from '../../Components/Herobox';
 
-const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
-  const backgroundImage = '/g7.jpg';
 
-  // Observe viewport - triggerOnce: false allows it to replay
+const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
+  const backgroundImage = '/g1.jpg';
+
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
   const [showContent, setShowContent] = useState(false);
 
-  // Show content with delay when in view, then hide after 1.5s
   useEffect(() => {
     let showTimer: NodeJS.Timeout;
     let hideTimer: NodeJS.Timeout;
@@ -446,13 +445,11 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
     if (inView) {
       showTimer = setTimeout(() => {
         setShowContent(true);
-        // "Be gone" logic with 1.5s gap
         hideTimer = setTimeout(() => {
           setShowContent(false);
-        }, 3000); // Display for 3 seconds instead of 1.5s
-      }, 500); // Wait for load/view
+        }, 3000);
+      }, 500);
     } else {
-      // Reset when scrolling away so it can re-animate
       setShowContent(false);
     }
 
@@ -478,13 +475,13 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
           style={{ backgroundImage: `url(${backgroundImage})` }}
           initial={{ scale: 1.1 }}
           animate={{ scale: inView ? 1 : 1.1 }}
-          transition={{ duration: 2.5, ease: "easeOut" }} // Slower parallax entrance
+          transition={{ duration: 2.5, ease: "easeOut" }}
         />
 
-        {/* Animated Gradient Overlay - Optimized for better blending */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
 
-        {/* Animated Grid Pattern - Sync with About Page */}
+        {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         </div>
@@ -501,44 +498,51 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
                 y: -40,
                 filter: "blur(20px)",
                 scale: 1.2,
-                transition: { duration: 1.5, ease: "easeInOut" } // Slower exit blur
+                transition: { duration: 1.5, ease: "easeInOut" }
               }}
               className="relative z-20 min-h-screen flex items-center justify-center px-4"
             >
               <div className="text-center w-full flex flex-col items-center">
-                <motion.h1
-                  className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4 leading-tight bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] whitespace-normal sm:whitespace-nowrap overflow-visible p-2"
-                >
-                  IEEE Computer Society UCP
-                </motion.h1>
+                {/* Typing Animation */}
+                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4 leading-tight bg-gradient-to-r from-white via-[#6ce28f] to-[#09501e] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] whitespace-normal sm:whitespace-nowrap overflow-visible p-2">
+                  <Typewriter
+                    words={['UCP WELFARE SOCIETY']}
+                    loop={1}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={100}
+                    deleteSpeed={50}
+                    delaySpeed={1500}
+                  />
+                </h1>
 
-                {/* Animated Underline - Sync with About Page */}
+                {/* Animated Underline */}
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: "200px" }}
-                  transition={{ delay: 0.5, duration: 1.5 }} // Slower underline draw
+                  transition={{ delay: 0.5, duration: 1.5 }}
                   className="h-1 bg-[#FFA016] mb-8"
                 />
 
+                {/* New Subtitle */}
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 1.5 }} // Slower text fade
+                  transition={{ delay: 1, duration: 1.5 }}
                   className="text-lg sm:text-xl md:text-2xl text-white/80 drop-shadow-2xl font-bold max-w-4xl mx-auto tracking-widest uppercase"
                 >
-                  Empowering Future Tech Leaders
+                  Serving the Community with Compassion
                 </motion.p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Bottom Masking - Enhanced for Blending with Logo Bar */}
+        {/* Bottom Masking */}
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
 
       </section>
 
-      {/* Page Sections */}
       <div>{children}</div>
 
       {/* Footer */}
@@ -548,9 +552,3 @@ const HomepageLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default HomepageLayout;
-
-
-
-
-
-

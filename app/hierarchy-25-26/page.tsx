@@ -62,7 +62,7 @@ const hierarchyMembers = [
 const teamManagement = [
     { name: "Muhammad Wajeeh ", position: "Director", image: "/wajeeh.JPG", description: "Leadership description here." },
     { name: "Fahad Abid", position: "Co-Director", image: "/Fahad.JPG", description: "Leadership description here." },
-];
+];///fix
 const teamMarketing = [
     { name: "Shafay Sarwar", position: "Director", image: "/shafay.JPG", description: "Leadership description here." },
     { name: "Syed Muneeb Shah", position: "Co-Director", image: "/muneeb.JPG", description: "Leadership description here." },
@@ -95,7 +95,8 @@ const teamPublications = [
     { name: "Abdullah Habib", position: "Director", image: "/abd2.JPG", description: "Leadership description here." },
     // { name: "Member Name", position: "Co-Director", image: "/group.jpg", description: "Leadership description here." },
 ];
-
+//fixed hey
+//hey
 const Hierarchy2526 = () => {
     return (
         <HierarchyLayout

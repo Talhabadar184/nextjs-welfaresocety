@@ -44,19 +44,27 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full h-20 z-[100] transition-all duration-300
-        ${scrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"}`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-colors duration-300">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3">
-          <div className="w-20 h-20 transition-transform duration-300 group-hover:scale-105">
-            <img src="/logo3.png" alt="UCP Welfare Society" className="w-full h-full object-contain" />
-          </div>
-          <span className="text-sm md:text-base font-bold uppercase tracking-widest transition-colors">
-            UCP Welfare Society
-          </span>
-        </Link>
+  className={`fixed top-0 left-0 w-full h-20 z-[100] transition-all duration-300
+    ${scrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"}`}
+>
+  <div className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-colors duration-300">
+    
+    {/* Logo */}
+    <Link href="/" className="flex items-center space-x-3">
+      <div className="w-20 h-20 transition-transform duration-300 group-hover:scale-105">
+        <img
+          src={scrolled ? "/Logo2.png" : "/logo3.png"}
+          alt="UCP Welfare Society"
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      <span className="text-sm md:text-base font-bold uppercase tracking-widest transition-colors">
+        UCP Welfare Society
+      </span>
+    </Link>
+
+  
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1">

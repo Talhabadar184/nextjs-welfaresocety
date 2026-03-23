@@ -5,7 +5,7 @@ const backgroundImage = '/a2.jpg';
 
 const AboutUsOverlaySection = () => {
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden bg-gradient-to-r from-black via-zinc-900 to-[#FFA016]">
+    <section className="relative h-[80vh] w-full overflow-hidden bg-gradient-to-r from-black via-zinc-900 to-[#299c12]">
       <div className="relative z-10 h-full flex flex-col md:flex-row">
         {/* Left: Image without overlay */}
         <div className="relative w-full md:w-1/2 h-full">
@@ -33,14 +33,14 @@ const AboutUsOverlaySection = () => {
             >
               About Us
             </motion.h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[#FFA016] to-[#ff8c00] mb-6"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#74b886] to-[#115611] mb-6"></div>
             <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">
-              IEEE Computer Society
+              UCP Welfare Society
               <br />
-              <span className="text-[#FFA016]">UCP Chapter</span>
+              <span className="text-[#ffbf00]">Empowering Communities</span>
             </h3>
             <p className="text-lg md:text-xl leading-relaxed text-gray-300">
-              The IEEE Computer Society UCP Student Chapter connects students globally through innovation, leadership, and learning. We host events, workshops, and competitions to inspire collaboration and technical excellence.
+              The UCP Welfare Society aims to empower communities through various initiatives and programs. We focus on creating a supportive environment for students to grow and thrive.
             </p>
           </div>
         </motion.div>

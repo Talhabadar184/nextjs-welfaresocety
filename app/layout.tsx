@@ -28,19 +28,15 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "IEEE Computer Society UCP Chapter | Empowering Tech Leaders",
+  title: "UCP Welfare Society ",
   description:
-    "Official website of the IEEE Computer Society UCP Student Chapter. We empower students at the University of Central Punjab through innovation, technical workshops, and global tech community networking.",
+    "Official website of UCP Welfare Society. Our goal is to nurture social leaders and emphasize the importance of community service.",
   keywords: [
-    "IEEE",
-    "IEEE Computer Society",
-    "UCP",
+    "UCP Welfare Society",
+    "Community Service",
+    "Social Leadership",
     "University of Central Punjab",
-    "IEEE CS UCP",
-    "Student Chapter",
-    "Tech Community Lahore",
-    "Computer Science Workshops",
-    "Software Engineering Pakistan",
+    "UCP Welfare Society",
   ],
   authors: [{ name: "Talha Badar" }],
   openGraph: {
@@ -54,7 +50,7 @@ export const metadata: Metadata = {
         url: "/Logo2.png",
         width: 800,
         height: 800,
-        alt: "IEEE CS UCP Logo",
+        alt: "UWS Logo",
       },
     ],
     locale: "en_US",

@@ -21,9 +21,9 @@ const reels = [
 ];
 
 const socialLinks = [
-  { icon: FaFacebookF, url: "https://facebook.com", label: "Facebook" },
-  { icon: FaInstagram, url: "https://instagram.com/ieeecsucp", label: "Instagram" },
-  { icon: FaLinkedinIn, url: "https://linkedin.com", label: "LinkedIn" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/profile.php?viewas=100000686899395&id=61581628452395", label: "Facebook" },
+  { icon: FaInstagram, url: "https://www.instagram.com/ucp.welfaresociety/", label: "Instagram" },
+  { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/ucp-welfare-society/", label: "LinkedIn" },
   { icon: FaWhatsapp, url: "https://whatsapp.com", label: "WhatsApp" },
 ];
 
@@ -34,7 +34,7 @@ const InstagramGallery = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-black uppercase mb-4 text-black">
-            Follow <span className="text-[#FFA016]">Us</span>
+            Follow <span className="text-[#118219]">Us</span>
           </h2>
           <p className="text-gray-600 text-lg mb-8">Stay connected with our latest updates and events</p>
 

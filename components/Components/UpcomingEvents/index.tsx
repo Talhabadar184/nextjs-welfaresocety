@@ -97,7 +97,7 @@ const UpcomingEvents = () => {
         {/* Left Content */}
         <div className="pt-0 lg:pt-[50px] flex flex-col justify-start text-center lg:text-left">
           <h2 className="text-4xl sm:text-5xl font-black text-black mb-8 leading-tight">
-            Upcoming <span className="text-[#FFA016]">Events</span>
+            Upcoming <span className="text-[#2eb258]">Events</span>
           </h2>
           <p className="text-gray-600 mb-8 text-lg max-w-md mx-auto lg:mx-0">
             Discover our latest tech events, workshops, and community gatherings
@@ -140,7 +140,7 @@ const UpcomingEvents = () => {
           </div>
 
           {/* Box 2 (Event 2) - Orange */}
-          <div className="bg-gradient-to-br from-[#FFA016] to-[#ff8c00] text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
+          <div className="bg-gradient-to-br from-[#ffe135] to-[#9a8909] text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             {event2 ? (
               <div className="relative z-10">

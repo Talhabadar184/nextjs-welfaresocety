@@ -21,9 +21,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: <FaFacebookF />, url: "https://www.facebook.com/profile.php?id=61566259647198", label: "Facebook" },
-    { icon: <FaInstagram />, url: "https://www.instagram.com/ieee.cs.ucp/", label: "Instagram" },
-    { icon: <FaLinkedinIn />, url: "https://www.linkedin.com/company/ieee-computer-society-ucp-student-chapter/", label: "LinkedIn" },
+    { icon: <FaFacebookF />, url: "https://www.facebook.com/profile.php?viewas=100000686899395&id=61581628452395", label: "Facebook" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/ucp.welfaresociety/", label: "Instagram" },
+    { icon: <FaLinkedinIn />, url: "https://www.linkedin.com/company/ucp-welfare-society/", label: "LinkedIn" },
   ];
 
   const quickLinks = [
@@ -35,7 +35,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-white text-black pt-20 pb-10 overflow-hidden border-t border-gray-100">
+    <footer className="relative bg-gray-200 text-black pt-20 pb-10 overflow-hidden border-t border-gray-100">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FFA016]/30 to-transparent"></div>
 
@@ -47,11 +47,11 @@ const Footer = () => {
               <img src="/Logo2.png" alt="IEEE CS Logo" className="w-16 h-16 object-contain" />
               <div className="flex flex-col">
                 <span className="text-black font-black text-xl tracking-tighter uppercase leading-none">
-                  IEEE Computer Society
+                  UCP Welfare Society
                 </span>
-                <span className="text-[#FFA016] text-[10px] font-bold uppercase tracking-[0.2em] mt-1">
+                {/* <span className="text-[#FFA016] text-[10px] font-bold uppercase tracking-[0.2em] mt-1">
                   UCP Student Chapter
-                </span>
+                </span> */}
               </div>
             </Link>
             <p className="text-gray-800 text-sm leading-relaxed max-w-sm font-medium">
@@ -66,7 +66,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center text-[#FFA016] hover:bg-[#FFA016] hover:text-white transition-all duration-300 shadow-sm"
+                  className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center text-[#1c872e] hover:bg-[#1c872e] hover:text-white transition-all duration-300 shadow-sm"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -77,7 +77,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="md:col-span-3">
-            <h3 className="text-black font-black uppercase tracking-widest text-sm mb-8 border-l-4 border-[#FFA016] pl-4">
+            <h3 className="text-black font-black uppercase tracking-widest text-sm mb-8 border-l-4 border-[#1c872e] pl-4">
               Quick Navigation
             </h3>
             <ul className="space-y-4">
@@ -85,9 +85,9 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.path}
-                    className="text-gray-800 hover:text-[#FFA016] transition-colors duration-300 text-sm font-bold flex items-center group"
+                    className="text-gray-800 hover:text-[#1c872e] transition-colors duration-300 text-sm font-bold flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-4 h-px bg-[#FFA016] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                    <span className="w-0 group-hover:w-4 h-px bg-[#1c872e] mr-0 group-hover:mr-2 transition-all duration-300"></span>
                     {link.name}
                   </Link>
                 </li>
@@ -97,12 +97,12 @@ const Footer = () => {
 
           {/* Contact Details */}
           <div className="md:col-span-4">
-            <h3 className="text-black font-black uppercase tracking-widest text-sm mb-8 border-l-4 border-[#FFA016] pl-4">
+            <h3 className="text-black font-black uppercase tracking-widest text-sm mb-8 border-l-4 border-[#1c872e] pl-4">
               Contact Info
             </h3>
             <div className="space-y-6">
               <div className="flex items-start space-x-4 group">
-                <div className="w-10 h-10 rounded-xl bg-[#FFA016]/5 flex items-center justify-center text-[#FFA016] group-hover:bg-[#FFA016] group-hover:text-white transition-colors duration-300 shrink-0 border border-gray-50">
+                <div className="w-10 h-10 rounded-xl bg-[#FFA016]/5 flex items-center justify-center text-[#1c872e] group-hover:bg-[#1c872e] group-hover:text-white transition-colors duration-300 shrink-0 border border-gray-50">
                   <FaLocationDot />
                 </div>
                 <div>
@@ -115,12 +115,12 @@ const Footer = () => {
               </div>
 
               <div className="flex items-start space-x-4 group">
-                <div className="w-10 h-10 rounded-xl bg-[#FFA016]/5 flex items-center justify-center text-[#FFA016] group-hover:bg-[#FFA016] group-hover:text-white transition-colors duration-300 shrink-0 border border-gray-50">
+                <div className="w-10 h-10 rounded-xl bg-[#FFA016]/5 flex items-center justify-center text-[#1c872e] group-hover:bg-[#1c872e] group-hover:text-white transition-colors duration-300 shrink-0 border border-gray-50">
                   <FaEnvelope />
                 </div>
                 <div>
                   <p className="text-black font-black text-sm mb-1 uppercase tracking-tight">Email Us</p>
-                  <p className="text-gray-800 text-xs font-bold">ieee.cs@ucp.edu.pk</p>
+                  <p className="text-gray-800 text-xs font-bold">welfaresociety@ucp.edu.pk</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center py-6 space-y-4 md:space-y-0">
           <p className="text-gray-600 text-[10px] uppercase font-black tracking-widest text-center md:text-left">
-            &#169; {currentYear} IEEE COMPUTER SOCIETY UCP. ALL RIGHTS RESERVED.
+            &#169; {currentYear} UCP Welfare Society. ALL RIGHTS RESERVED.
           </p>
 
           <p className="text-gray-600 text-[10px] font-black uppercase tracking-widest">
@@ -144,13 +144,13 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-black hover:text-[#FFA016] transition-colors duration-300 border-b border-[#FFA016]/30 pb-0.5"
             >
-              Hassan Jamshaid
+             Talha Badar
             </a>
           </p>
 
           <button
             onClick={scrollToTop}
-            className="group flex flex-col items-center space-y-2 text-[#FFA016] hover:text-black transition-colors"
+            className="group flex flex-col items-center space-y-2 text-[#1c872e] hover:text-black transition-colors"
           >
             <div className="w-10 h-10 rounded-full border border-[#FFA016]/30 flex items-center justify-center group-hover:border-black transition-all">
               <FaArrowUp className="animate-bounce" />

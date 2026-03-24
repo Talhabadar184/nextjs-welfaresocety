@@ -19,10 +19,7 @@ const SocietyDescription = () => {
             Our Vision
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase mb-12 tracking-tight">
-            Driving Innovation, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFA016] to-white">
-              Shaping the Future
-            </span>
+            Our Mission
           </h2>
         </motion.div>
 
@@ -34,30 +31,24 @@ const SocietyDescription = () => {
           className="relative"
         >
           {/* Decorative quote mark */}
-          <div className="absolute -top-10 -left-4 text-9xl text-[#FFA016]/10 font-serif pointer-events-none">"</div>
+          <div className="absolute -top-10 -left-4 text-9xl text-[#1c872e]/10 font-serif pointer-events-none">"</div>
 
           <p className="text-lg md:text-xl leading-relaxed text-gray-400 font-medium max-w-4xl mx-auto mb-16 relative z-10">
-            Our society is a dynamic and inclusive community committed to fostering growth,
-            collaboration, and innovation across various disciplines. We provide a platform for
-            students and enthusiasts to explore their passions, develop skills, and engage in
-            meaningful projects that create real-world impact.
+            UCP Welfare Society is a purpose-driven and inclusive community dedicated to serving humanity through compassion, collaboration, and impactful initiatives. We provide a platform for students to engage in community service, develop leadership skills, and contribute to meaningful causes that create real-world impact.          .
             <br /><br />
-            Through workshops, guest lectures, competitions, and social events, we aim to build
-            a space where creativity thrives and every voice is valued. Whether you're a beginner
-            looking to learn or an experienced member eager to share knowledge, our society offers
-            opportunities for everyone.
+            Through welfare drives, community visits, awareness campaigns, and fundraising initiatives, we strive to uplift underprivileged communities and spread kindness. Whether you’re someone eager to give back or looking to grow through service, UCP Welfare Society offers a space where every effort counts and every heart matters.
           </p>
 
           {/* Decorative quote mark */}
-          <div className="absolute -bottom-20 -right-4 text-9xl text-[#FFA016]/10 font-serif pointer-events-none rotate-180">"</div>
+          <div className="absolute -bottom-20 -right-4 text-9xl text-[#1c872e]/10 font-serif pointer-events-none rotate-180">"</div>
         </motion.div>
 
         <div className="flex flex-col items-center">
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#FFA016] to-transparent mb-8"></div>
           <img
-            src="/Logo2.png"
+            src="/Logo3.png"
             alt="Society Logo"
-            className="w-16 h-16 object-contain transition-all duration-500"
+            className="w-28 h-28 object-contain transition-all duration-500"
           />
         </div>
       </div>

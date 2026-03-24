@@ -16,7 +16,7 @@ const exploreData = [
   },
   {
     title: "Register",
-    description: "Register now to join top tech society of UCP",
+    description: "Register now to join UCP Welfare Society and be part of our impactful initiatives.",
     path: "/register",
   },
 ];
@@ -26,7 +26,7 @@ const ExploreMoreSection = () => {
     <section className="bg-black py-20 px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl sm:text-5xl font-black mb-12 uppercase text-white">
-          Explore <span className="text-[#FFA016]">More</span>
+          Explore <span className="text-[#1c872e]">More</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,18 +38,18 @@ const ExploreMoreSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               whileHover={{ y: -10 }}
-              className="relative bg-white text-black p-8 rounded-2xl overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-[#FFA016]"
+              className="relative bg-white text-black p-8 rounded-2xl overflow-hidden group cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-[#2a811b]"
             >
 
               <div className="relative z-10">
-                <h3 className="text-2xl font-black uppercase text-black tracking-wide mb-4 group-hover:text-[#FFA016] transition-colors">
+                <h3 className="text-2xl font-black uppercase text-black tracking-wide mb-4 group-hover:text-[#2a811b] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-base text-gray-700 mb-6">{item.description}</p>
               </div>
 
               <div className="flex justify-end">
-                <Link href={item.path} className="w-12 h-12 rounded-full bg-black group-hover:bg-[#FFA016] flex items-center justify-center transition-all duration-300 shadow-lg">
+                <Link href={item.path} className="w-12 h-12 rounded-full bg-black group-hover:bg-[#32a220] flex items-center justify-center transition-all duration-300 shadow-lg">
                   <ArrowRight className="text-white w-5 h-5 transition-colors" />
                 </Link>
               </div>

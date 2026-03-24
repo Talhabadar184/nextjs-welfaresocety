@@ -3,20 +3,20 @@ import { FaInstagram, FaLinkedinIn, FaWhatsapp, FaFacebookF } from "react-icons/
 
 const reels = [
   {
-    url: "https://www.instagram.com/reel/DHzdam4tT-I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    url: "https://www.instagram.com/p/DVBc9KRj3H-/",
     thumbnail: "/reel1.png",
   },
   {
-    url: "https://www.instagram.com/reel/DHT4F30M6Lw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    url: "https://www.instagram.com/p/DVOFmspjMBr/",
     thumbnail: "/reel2.png",
   },
   {
-    url: "https://www.instagram.com/reel/DEQMvPisWuG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    url: "https://www.instagram.com/p/DRK8dr4DKXN/",
     thumbnail: "/reel3.png",
   },
   {
-    url: "https://www.instagram.com/reel/DHzdam4tT-I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    thumbnail: "/reel1.png",
+    url: "https://www.instagram.com/p/DPemZjQDDEu/",
+    thumbnail: "/reel4.png",
   },
 ];
 

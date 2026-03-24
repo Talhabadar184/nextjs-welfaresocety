@@ -12,16 +12,15 @@ import InstagramGallery from '../components/Components/InstagramGallery';
 
 const hierarchyMembers = [
   {
-  name: "Ahmad Mehmood",
-  position: "Vice President",
-  image: "/ahmad.jpg",
-  description: "Ahmad Mehmood serves as the Vice President of UCP Welfare Society, playing a key role in organizing welfare initiatives and ensuring smooth coordination across teams. His dedication to community service and leadership helps drive impactful projects for those in need.",
-},
-{
   name: "Talha Badar",
   position: "President",
   image: "/talha.jpg",
   description: "Talha Badar, President of UCP Welfare Society, is a passionate leader committed to serving the community. With strong organizational and leadership skills, he leads welfare initiatives, manages large-scale events, and inspires the team to create meaningful social impact.",
+},{
+  name: "Ahmad Mehmood",
+  position: "Vice President",
+  image: "/ahmad.jpg",
+  description: "Ahmad Mehmood serves as the Vice President of UCP Welfare Society, playing a key role in organizing welfare initiatives and ensuring smooth coordination across teams. His dedication to community service and leadership helps drive impactful projects for those in need.",
 },
 {
   name: "Kaneez Fatima",

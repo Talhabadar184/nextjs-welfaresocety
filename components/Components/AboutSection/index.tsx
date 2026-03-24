@@ -66,7 +66,7 @@ const AboutSection = () => {
             <motion.h1
               className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-center tracking-tighter"
             >
-              <span className="bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+              <span className="bg-gradient-to-r from-white via-white to-[#1c872e] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                 About us
               </span>
             </motion.h1>
@@ -74,7 +74,7 @@ const AboutSection = () => {
               initial={{ width: 0 }}
               animate={{ width: "200px" }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="h-1 bg-[#FFA016] mt-4"
+              className="h-1 bg-[#1c872e] mt-4"
             />
           </motion.div>
         )}

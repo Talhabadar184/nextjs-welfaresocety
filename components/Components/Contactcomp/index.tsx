@@ -40,17 +40,21 @@ const Contactcomp = () => {
   name: "Talha Badar",
   position: "President",
   image: "/talha.JPG",
+  phone: "+92 300 1234567",
   description: "Talha Badar, President of UCP Welfare Society, is a passionate leader committed to serving the community. With strong organizational and leadership skills, he leads welfare initiatives, manages large-scale events, and inspires the team to create meaningful social impact.",
 },{
   name: "Ahmad Mehmood",
   position: "Vice President",
   image: "/ahmad.JPG",
+    phone: "+92 300 1234567",
   description: "Ahmad Mehmood serves as the Vice President of UCP Welfare Society, playing a key role in organizing welfare initiatives and ensuring smooth coordination across teams. His dedication to community service and leadership helps drive impactful projects for those in need.",
 },
 {
   name: "Kaneez Fatima",
   position: "Vice President",
   image: "/kaneez.JPG",
+    phone: "+92 300 1234567",
+
   description: "Kaneez Fatima, Vice President of UCP Welfare Society, actively contributes to planning and executing welfare activities. Her commitment, teamwork, and passion for helping others play a vital role in spreading positivity and making a difference in the community.",
 }
    
@@ -86,7 +90,7 @@ const Contactcomp = () => {
                     transition={{ delay: index * 0.1 }}
                     className="p-6 bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl group hover:border-[#FFA016]/30 transition-all duration-500"
                   >
-                    <h3 className="text-[#FFA016] text-[10px] font-black uppercase tracking-[0.2em] mb-2">{contact.title}</h3>
+                    {/* <h3 className="text-[#FFA016] text-[10px] font-black uppercase tracking-[0.2em] mb-2">{contact.title}</h3> */}
                     <p className="text-white text-xl font-bold mb-4">{contact.name}</p>
                     <div className="flex flex-col gap-3">
                       <a href={`tel:${contact.phone}`} className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">

@@ -17,13 +17,13 @@ const Hierarchy2425 = () => {
             {
         name: "Talha Badar",
         position: "President",
-        image: "/talha1.JPG",
+        image: "/talha1.jpg",
         description: `Meet Talha Badar, a BSCS student at UCP whose university journey has been a remarkable story of growth and self-discovery. 🌟 Once a shy individual, Talha discovered his confidence and purpose through active participation in various societies and events. From contributing to the UCP Welfare Society, Dramatics Club (UDC), ACM, MLSA, and Rizq, he built a legacy of dedication and excellence. His year-long tenure with the UCP Welfare Society, serving in two key roles, became a transformative milestone in his personal and professional development. He also embarked on a new chapter with the Sawera Foundation, collaborating with an inspiring team to create meaningful change. 🚀
 Talha further sharpened his teamwork and leadership skills.With a passion for academics and extracurriculars, Talha is determined to leave an impactful legacy—not just through hard work, but by making a real difference in every role he undertakes.`,
         },{
         name: "Saleema Masoom",
         position: "Vice President",
-        image: "/saleema.JPG",
+        image: "/saleema.jpg",
         description: `Meet our Vice President Saleema Masoom, she started her journey by volunteering in “Youth Development Conference “and ever since then she has been steadfastly dedicated to the noble cause of social work by doing social work with UWS.Saleema’s pivotal role Include managing budget for every event and to ensure the funds reach to deserving individuals. Her commitment to financial Transparency accountability shows how important she is to our societies mission goals and how much we can achieve because of her.`,
         }  
     ];

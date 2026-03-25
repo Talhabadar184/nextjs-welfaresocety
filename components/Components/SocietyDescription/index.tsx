@@ -46,7 +46,7 @@ const SocietyDescription = () => {
         <div className="flex flex-col items-center">
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#FFA016] to-transparent mb-8"></div>
           <img
-            src="/Logo3.png"
+            src="/logo3.png"
             alt="Society Logo"
             className="w-28 h-28 object-contain transition-all duration-500"
           />

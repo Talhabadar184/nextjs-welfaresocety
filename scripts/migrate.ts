@@ -17,14 +17,19 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// DEBUG: show the loaded database URL
 console.log('DEBUG: Loaded DATABASE_URL:', process.env.DATABASE_URL);
 
 async function migrateToLatest() {
-    const isLocal = process.env.DATABASE_URL?.includes('localhost') || process.env.DATABASE_URL?.includes('127.0.0.1');
+    if (!process.env.DATABASE_URL) {
+        console.error('❌ DATABASE_URL is not defined in your .env.local');
+        process.exit(1);
+    }
 
+    // Always use SSL but ignore certificate verification (TLS 0)
     const pool = new Pool({
         connectionString: process.env.DATABASE_URL,
-        ssl: isLocal ? false : { rejectUnauthorized: false },
+        ssl: { rejectUnauthorized: false }, // ✅ TLS 0
     });
 
     const db = new Kysely({
@@ -40,23 +45,31 @@ async function migrateToLatest() {
         }),
     });
 
-    const { error, results } = await migrator.migrateToLatest();
+    try {
+        const { error, results } = await migrator.migrateToLatest();
 
-    results?.forEach((it) => {
-        if (it.status === 'Success') {
-            console.log(`✅ migration "${it.migrationName}" executed`);
+        results?.forEach((it) => {
+            if (it.status === 'Success') {
+                console.log(`✅ migration "${it.migrationName}" executed`);
+            } else {
+                console.error(`❌ migration "${it.migrationName}" failed`);
+            }
+        });
+
+        if (error) {
+            console.error('❌ Migration failed');
+            console.error(error);
+            process.exit(1);
         } else {
-            console.error(`❌ migration "${it.migrationName}" failed`);
+            console.log('🎉 All migrations executed successfully!');
         }
-    });
-
-    if (error) {
-        console.error('❌ Migration failed');
-        console.error(error);
+    } catch (err) {
+        console.error('❌ Migration encountered an unexpected error:');
+        console.error(err);
         process.exit(1);
+    } finally {
+        await db.destroy();
     }
-
-    await db.destroy();
 }
 
 migrateToLatest();

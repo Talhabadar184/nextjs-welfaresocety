@@ -37,28 +37,23 @@ const Contactcomp = () => {
 
   const contacts = [
     {
-      title: 'President',
-      name: 'Ali Usman Khan',
-      phone: '+92 321 5353105',
-      // email: 'chair@ieeecsucp.org'
-    },
-    {
-      title: 'Vice-President',
-      name: 'Abdul Moeiz Khan',
-      phone: '+92 304 4869577',
-      // email: 'v.chair@ieeecsucp.org'
-    },
-    {
-      title: 'General Secretary',
-      name: 'Anwar Karim',
-      phone: '+92 355 5479832',
-      // email: 'gen.sec@ieeecsucp.org'
-    },
-    {
-      title: 'Coordinator',
-      name: 'Qasim Naseer',
-      phone: '+92 309 4671771',
-    }
+  name: "Talha Badar",
+  position: "President",
+  image: "/talha.JPG",
+  description: "Talha Badar, President of UCP Welfare Society, is a passionate leader committed to serving the community. With strong organizational and leadership skills, he leads welfare initiatives, manages large-scale events, and inspires the team to create meaningful social impact.",
+},{
+  name: "Ahmad Mehmood",
+  position: "Vice President",
+  image: "/ahmad.JPG",
+  description: "Ahmad Mehmood serves as the Vice President of UCP Welfare Society, playing a key role in organizing welfare initiatives and ensuring smooth coordination across teams. His dedication to community service and leadership helps drive impactful projects for those in need.",
+},
+{
+  name: "Kaneez Fatima",
+  position: "Vice President",
+  image: "/kaneez.JPG",
+  description: "Kaneez Fatima, Vice President of UCP Welfare Society, actively contributes to planning and executing welfare activities. Her commitment, teamwork, and passion for helping others play a vital role in spreading positivity and making a difference in the community.",
+}
+   
   ];
 
   return (

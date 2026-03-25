@@ -8,10 +8,10 @@ interface HierarchyLayoutProps {
   hideOverlay?: boolean;
 }
 
-const HierarchyLayout = ({ children, title, subtitle, backgroundImage = "/g9.jpg", hideOverlay = false }: HierarchyLayoutProps) => {
+const HierarchyLayout = ({ children, title, subtitle, backgroundImage = "/g3.jpg", hideOverlay = false }: HierarchyLayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
-
+3
       {/* Premium Cinematic Hero with About Animations */}
       <HierarchyHero
         title={title}

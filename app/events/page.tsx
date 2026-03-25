@@ -30,7 +30,7 @@ const Events = () => {
 
     return (
         <EventLayout>
-            <div className="bg-black py-20 px-6">
+            {/* <div className="bg-black py-20 px-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col mb-16 px-4">
                         <div className="flex items-center gap-4 mb-4">
@@ -60,6 +60,9 @@ const Events = () => {
                         ))}
                     </div>
                 </div>
+            </div> */}
+            <div>
+                coming soon
             </div>
         </EventLayout>
     );

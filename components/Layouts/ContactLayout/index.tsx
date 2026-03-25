@@ -8,7 +8,7 @@ const ContactLayout = ({ children }: { children: React.ReactNode }) => {
       <HierarchyHero
         title="Contact Us"
         subtitle="We're here to help you innovate"
-        backgroundImage="/contacthero.jpg"
+        backgroundImage="/.jpg"
       />
 
       {/* Page Content */}

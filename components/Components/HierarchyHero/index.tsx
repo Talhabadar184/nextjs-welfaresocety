@@ -84,7 +84,7 @@ const HierarchyHero = ({ title, subtitle, backgroundImage, hideOverlay = false }
                         <motion.h1
                             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter"
                         >
-                            <span className="bg-gradient-to-r from-white via-white to-[#FFA016] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                            <span className="bg-gradient-to-r from-white via-white to-[#24a542] bg-clip-text text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                                 {title}
                             </span>
                         </motion.h1>
@@ -104,7 +104,7 @@ const HierarchyHero = ({ title, subtitle, backgroundImage, hideOverlay = false }
                             initial={{ width: 0 }}
                             animate={{ width: "240px" }}
                             transition={{ delay: 0.6, duration: 1 }}
-                            className="h-1 bg-gradient-to-r from-[#FFA016] to-[#ff8c00] mt-8 rounded-full"
+                            className="h-1 bg-gradient-to-r from-[#24a542] to-[#ff8c00] mt-8 rounded-full"
                         />
                     </motion.div>
                 )}
@@ -118,7 +118,7 @@ const HierarchyHero = ({ title, subtitle, backgroundImage, hideOverlay = false }
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center"
             >
                 <span className="text-white/40 text-xs uppercase tracking-widest mb-2 font-bold">Scroll Down</span>
-                <div className="w-1 h-12 bg-gradient-to-b from-[#FFA016] to-transparent rounded-full" />
+                <div className="w-1 h-12 bg-gradient-to-b from-[#24a542] to-transparent rounded-full" />
             </motion.div>
 
             {/* Bottom Masking */}

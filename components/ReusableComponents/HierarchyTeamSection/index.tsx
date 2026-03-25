@@ -31,7 +31,7 @@ const HierarchyTeamSection = ({ title, members, showOverlay = true }: HierarchyT
                         className="flex items-center gap-4"
                     >
                         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white">
-                            {title.split(' ')[0]} <span className="text-[#FFA016]">{title.split(' ').slice(1).join(' ')}</span>
+                            {title.split(' ')[0]} <span className="text-[#24a542]">{title.split(' ').slice(1).join(' ')}</span>
                         </h2>
                         <div className="flex-grow h-[1px] bg-gradient-to-r from-[#FFA016]/50 to-transparent ml-4 hidden md:block" />
                     </motion.div>
@@ -57,13 +57,13 @@ const HierarchyTeamSection = ({ title, members, showOverlay = true }: HierarchyT
                                 </div>
 
                                 <div className="p-4 bg-gradient-to-t from-black via-black/80 to-transparent absolute bottom-0 left-0 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                    <div className="w-8 h-1 bg-[#FFA016] mb-2 rounded-full" />
+                                    <div className="w-8 h-1 bg-[#24a542] mb-2 rounded-full" />
                                     <h3 className="text-lg font-bold uppercase text-white truncate">{member.name}</h3>
-                                    <p className="text-[#FFA016] text-[10px] font-black uppercase tracking-widest">{member.position}</p>
+                                    <p className="text-[#24a542] text-[10px] font-black uppercase tracking-widest">{member.position}</p>
                                 </div>
 
                                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="bg-[#FFA016] text-black p-2 rounded-full shadow-lg">
+                                    <div className="bg-[#24a542] text-black p-2 rounded-full shadow-lg">
                                         <FaInfoCircle size={14} />
                                     </div>
                                 </div>

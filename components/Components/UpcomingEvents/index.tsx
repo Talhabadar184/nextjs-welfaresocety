@@ -79,9 +79,12 @@ const UpcomingEvents = () => {
   }
 
   // Fallbacks if less than 3 events
-  const event1 = upcomingEvents[3];
+  const event1 = upcomingEvents[0];
   const event2 = upcomingEvents[1];
   const event3 = upcomingEvents[2];
+  const event4 = upcomingEvents[3];
+  const event5 = upcomingEvents[4];
+
 
   // Images for the gallery (use event images or fallbacks)
   const galleryImages = upcomingEvents.map(e => e.image || "/g7.jpg");
@@ -158,7 +161,25 @@ const UpcomingEvents = () => {
             )}
           </div>
 
-          {/* Box 3 (Event 3) - Black */}
+          {/* Box 4 (Event 4) - Black */}
+          <div className="bg-gradient-to-br from-black to-zinc-800 text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FFA016]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {event4 ? (
+              <div className="relative z-10">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 line-clamp-2 transform group-hover:translate-x-1 transition-transform">{event4.date}</h3>
+                <p className="font-bold text-xl mb-3 line-clamp-2 transform group-hover:translate-x-1 transition-transform">{event3.title}</p>
+                <p
+                  className="underline mt-2 text-sm cursor-pointer hover:text-gray-300 inline-flex items-center gap-1 transform group-hover:translate-x-2 transition-transform"
+                  onClick={() => router.push(`/events/${event3.slug}`)}
+                >
+                  More Details <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </p>
+              </div>
+            ) : (
+              <p>Stay tuned!</p>
+            )}
+          </div>
+
           <div className="bg-gradient-to-br from-black to-zinc-800 text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-[#FFA016]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             {event3 ? (

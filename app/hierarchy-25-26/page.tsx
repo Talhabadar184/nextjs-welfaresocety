@@ -1,13 +1,16 @@
 import React from 'react';
 import HierarchyLayout from '../../components/Layouts/HierarchyLayout';
 import HierarchyTeamSection from '@/components/ReusableComponents/HierarchyTeamSection';
+import LeadershipCard from '@/components/ReusableComponents/LeadershipCard';
 
-const hierarchyMembers = [
+
+const coreLeadership = [
     {
   name: "Talha Badar",
   position: "President",
   image: "/talha.JPG",
-  description: "Talha Badar, President of UCP Welfare Society, is a passionate leader committed to serving the community. With strong organizational and leadership skills, he leads welfare initiatives, manages large-scale events, and inspires the team to create meaningful social impact.",
+  description: `Meet Talha Badar, a BSCS student at UCP whose university journey has been a remarkable story of growth and self-discovery. 🌟 Once a shy individual, Talha discovered his confidence and purpose through active participation in various societies and events. From contributing to the UCP Welfare Society, Dramatics Club (UDC), ACM, MLSA, and Rizq, he built a legacy of dedication and excellence. His year-long tenure with the UCP Welfare Society, serving in two key roles, became a transformative milestone in his personal and professional development. He also embarked on a new chapter with the Sawera Foundation, collaborating with an inspiring team to create meaningful change. 🚀
+Talha further sharpened his teamwork and leadership skills.With a passion for academics and extracurriculars, Talha is determined to leave an impactful legacy—not just through hard work, but by making a real difference in every role he undertakes.`,
 },{
   name: "Ahmad Mehmood",
   position: "Vice President",
@@ -62,6 +65,12 @@ const teamPublications = [
     { name: "Rubina Iftikhar", position: "Director", image: "/rubina1.JPG", description: "Leadership description here." },
     { name: "Esha Inam", position: "Co-Director", image: "/esha.JPG", description: "Leadership description here." },
 ];
+const advisor = {
+        name: "Muhammad Hammad ur Rehman",
+        position: "Patron - UCP Welfare Society",
+        image: "/sir.jpg",
+        description: `M. Hammad ur Rehman is a dedicated professional specializing in Corporate Social Responsibility (CSR), Partnerships and Engagement, and Community Service. With strong expertise in volunteer management and customer service, he excels in building meaningful relationships and delivering impactful initiatives. A skilled communicator and public speaker, Hammad is passionate about training, collaboration, and driving positive social change.`
+    };
 //fixed hey
 //hey
 const Hierarchy2526 = () => {
@@ -73,11 +82,40 @@ const Hierarchy2526 = () => {
             hideOverlay={true}
         >
             <div className="bg-black py-20">
-                <HierarchyTeamSection
+                {/* <HierarchyTeamSection
                     title="Leadership 25-26"
                     members={hierarchyMembers}
                     showOverlay={false}
-                />
+                /> */}
+                {/* Advisor Section */}
+                                <LeadershipCard
+                                    name={advisor.name}
+                                    title={advisor.position}
+                                    image={advisor.image}
+                                    message={advisor.description}
+                                    theme="dark"
+                                />
+                
+                                {/* Main Leadership Section */}
+                                <div className="py-20 flex flex-col gap-0">
+                                    <div className="max-w-7xl mx-auto px-6 mb-12 w-full text-center">
+                                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                                            Core <span className="text-[#FFA016]">Leadership</span>
+                                        </h2>
+                                        <div className="w-24 h-1 bg-[#FFA016] mt-4 mx-auto rounded-full" />
+                                    </div>
+                                    {coreLeadership.map((member, index) => (
+                                        <LeadershipCard
+                                            key={index}
+                                            name={member.name}
+                                            title={member.position}
+                                            image={member.image}
+                                            message={member.description}
+                                            theme="dark"
+                                            reverse={index % 2 !== 0}
+                                        />
+                                    ))}
+                                </div>
 
                 <HierarchyTeamSection
                     title="Team Communications"

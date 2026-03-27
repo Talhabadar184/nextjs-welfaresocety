@@ -79,7 +79,7 @@ const UpcomingEvents = () => {
   }
 
   // Fallbacks if less than 3 events
-  const event1 = upcomingEvents[0];
+  const event1 = upcomingEvents[3];
   const event2 = upcomingEvents[1];
   const event3 = upcomingEvents[2];
 

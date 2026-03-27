@@ -5,6 +5,7 @@ import Providers from "./providers";
 import Header from "@/components/Components/Header";
 import Footer from "@/components/Components/Footer";
 import { Montserrat } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
 
 
 /* 🎓 Classy University Fonts */
@@ -80,6 +81,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           {children}
+           <Analytics />
           <Footer />
         </Providers>
       </body>

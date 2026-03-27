@@ -179,7 +179,7 @@ const UpcomingEvents = () => {
               <p>Stay tuned!</p>
             )}
           </div>
-{/* 
+
           <div className="bg-gradient-to-br from-black to-zinc-800 text-white p-8 flex flex-col justify-center w-full h-full relative overflow-hidden group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:z-10 rounded-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-[#FFA016]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             {event3 ? (
@@ -196,7 +196,7 @@ const UpcomingEvents = () => {
             ) : (
               <p>Stay tuned!</p>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
